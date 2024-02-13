@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static citiesgame.UserStep.userStep;
+import static org.example.UserStep.userStep;
 
 public class GameWindow implements ActionListener {
     private static final int WINDOW_WIDTH = 516;
@@ -53,7 +53,7 @@ public class GameWindow implements ActionListener {
     static String lastComputerWord = null;
     static List<String> usedCities = new ArrayList<>();
 
-    //Створюємо компоненти.
+    //Create components
     JLabel computerLabel = new JLabel("Комп’ютер:");
     JLabel userLabel = new JLabel("Гравець:");
     static JTextField userWordField = new JTextField(15);
@@ -65,7 +65,7 @@ public class GameWindow implements ActionListener {
 
     GameWindow() {
 
-        //Створюємо фрейм и задаємо розміри і положення компонентів.
+        //We create a frame and set the dimensions and positions of the components.
         gameFrame = new JFrame("Міста!");
         gameFrame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         userLabel.setBounds(USER_LABEL_X, USER_LABEL_Y, USER_LABEL_WIDTH, USER_LABEL_HEIGHT);
@@ -87,14 +87,14 @@ public class GameWindow implements ActionListener {
         gameFrame.setLayout(null);
         gameFrame.setVisible(true);
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        messageArea.setLineWrap(true);  // Встановлюємо автоматичний перенос рядків
-        messageArea.setWrapStyleWord(true);  // Переносимо цілі слова, а не посередині слова
+        messageArea.setLineWrap(true);  // We set automatic line wrapping
+        messageArea.setWrapStyleWord(true);  // We wrap entire words, not in the middle of a word.
 
-        // Змінюємо колір фону вікна на жовтий.
+        // Changing the window background color to yellow.
         gameFrame.setForeground(Color.BLUE);
-        gameFrame.getContentPane().setBackground(Color.YELLOW);
+        gameFrame.getContentPane().setBackground(Color.ORANGE);
 
-        // Зміна розміру та шрифтів.
+        // Resizing and changing fonts.
         Font font = new Font("Arial", Font.BOLD, 18);
         Font mFont = new Font("Arial", Font.PLAIN, 16);
         Font bFont = new Font("Arial", Font.BOLD, 12);
@@ -106,7 +106,7 @@ public class GameWindow implements ActionListener {
         attention.setFont(mFont);
         messageArea.setFont(mFont);
 
-        // Змінюємо колір тексту для JLabel-ів та JButton.
+        // We change the text color to JLabel-ів and JButton.
         userLabel.setForeground(Color.BLUE);
         userWordField.setForeground(Color.BLACK);
         userStep.setBackground(Color.BLUE);
@@ -116,12 +116,12 @@ public class GameWindow implements ActionListener {
         attention.setForeground(Color.BLUE);
         messageArea.setForeground(Color.BLACK);
 
-        // Отримання розмірів екрану
+        // Getting screen dimensions
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenWidth = screenSize.width;
         int screenHeight = screenSize.height;
 
-        // Розрахунок координат для вікна, щоб відкрити його посередині екрану
+        // Calculating coordinates to open the window in the middle of the screen
         int x = (screenWidth - WINDOW_WIDTH) / 2;
         int y = (screenHeight - WINDOW_HEIGHT) / 2;
         gameFrame.setLocation(x, y);
