@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.HashSet;
 
-import static citiesgame.GreatingWindow.cities;
+import static org.example.GreatingWindow.cities;
 
 public class StudyWindow {
     private static final int WINDOW_WIDTH = 516;
@@ -35,14 +35,14 @@ public class StudyWindow {
 
     StudyWindow() {
 
-        //Создаём компоненты
+        //Create components
         JLabel askForLetter = new JLabel("Оберіть літеру алфавіта:");
         final JComboBox chooseLetter = new JComboBox(letters);
         JButton backButton = new JButton("Назад");
         final JList<String> citiesList = new JList<>();
         JScrollPane scrollPane = new JScrollPane(citiesList);
 
-        //Создаём фрейм и задаём размеры и раположение компонентов
+        //We create a frame and set the dimensions and positions of the components.
         JFrame studyFrame = new JFrame("Вивчаймо міста України!");
         studyFrame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 
@@ -60,13 +60,13 @@ public class StudyWindow {
         studyFrame.setVisible(true);
         studyFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Змінюємо колір фону вікна на жовтий
+        // Changing the window background color to yellow
         studyFrame.setForeground(Color.BLUE);
         studyFrame.getContentPane().
 
         setBackground(Color.YELLOW);
 
-        // Зміна розміру та шрифтів
+        // Changing the size and fonts
         Font font = new Font("Arial", Font.BOLD, 18);
         Font listFont = new Font("Arial", Font.PLAIN, 16);
         askForLetter.setFont(font);
@@ -74,19 +74,19 @@ public class StudyWindow {
         citiesList.setFont(listFont);
         backButton.setFont(font);
 
-        // Змінюємо колір тексту для JLabel та JButton
+        // Change the text color to JLabel and JButton
         askForLetter.setForeground(Color.BLUE);
         chooseLetter.setForeground(Color.BLACK);
         citiesList.setForeground(Color.BLACK);
         backButton.setForeground(Color.YELLOW);
         backButton.setBackground(Color.BLUE);
 
-        // Отримання розмірів екрану
+        // Obtaining screen dimensions
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenWidth = screenSize.width;
         int screenHeight = screenSize.height;
 
-        // Розрахунок координат для вікна, щоб відкрити його посередині екрану
+        // Calculating coordinates to open the window in the middle of the screen
         int x = (screenWidth - WINDOW_WIDTH) / 2;
         int y = (screenHeight - WINDOW_HEIGHT) / 2;
         studyFrame.setLocation(x, y);
@@ -97,8 +97,8 @@ public class StudyWindow {
         });
 
         backButton.addActionListener(e -> {
-            studyFrame.dispose(); //Закриваємо StudyWindow.
-            new GreatingWindow(); //Відкриваємо вітальне вікно.
+            studyFrame.dispose(); //Close StudyWindow.
+            new GreatingWindow(); //We open the welcome window.
         });
     }
 
