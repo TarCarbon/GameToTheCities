@@ -3,41 +3,41 @@ package org.example;
 import java.util.*;
 import java.util.List;
 
-import static citiesgame.GameWindow.*;
-import static citiesgame.GreatingWindow.cities;
-import static citiesgame.UserStep.userScore;
+import static org.example.GameWindow.*;
+import static org.example.GreatingWindow.cities;
+import static org.example.UserStep.userScore;
 
 public class ComputerStep {
     static int computerScore = 0;
     static char lastComputerWordChar;
     public static void computerStep(char lastUserWordChar) {
 
-        //Хід компьютера.
+        //Computer step.
         String lastComputerWord = getRandomCity(lastUserWordChar, cities, usedCities);
         usedCities.add(lastComputerWord);
 
         computerWordToGameWindow(lastComputerWord);
 
-        //isEnd від комп'ютера.
+        //isEnd from computer.
         isEndFromComputer(lastComputerWord);
 
-        //Ведемо рахунок балів компьютера.
+        //Get computer count.
         computerScore += (lastComputerWord != null ? lastComputerWord.length() * 5 : 0);
 
-        //Перевірка, якщо місто, яке ввів комп'ютер, закінчується на неіснуючу літеру.
+        //Check if computer put on the unreal literal
         isComputerInvalidLastChar(Objects.requireNonNull(lastComputerWord));
     }
 
     private static String getRandomCity(char lastUserWordChar, HashSet<String> cities, List<String> usedCities) {
         List<String> properCities = new ArrayList<>();
+        properCities.removeIf(usedCities::contains);
         for (String city : cities) {
             if (Character.toLowerCase(city.charAt(0)) == Character.toLowerCase(lastUserWordChar)) {
                 properCities.add(city);
             }
         }
 
-        //Перевірка на повтор від комп'ютера.
-        properCities.removeIf(usedCities::contains);
+        //Computer check for duplicates.
 
         if (properCities.isEmpty()) {
             return null;
