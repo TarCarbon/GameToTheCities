@@ -3,9 +3,9 @@ package org.example;
 import java.util.HashSet;
 import java.util.List;
 
-import static citiesgame.ComputerStep.*;
-import static citiesgame.GameWindow.*;
-import static citiesgame.GreatingWindow.cities;
+import static org.example.ComputerStep.*;
+import static org.example.GameWindow.*;
+import static org.example.GreatingWindow.cities;
 
 public class UserStep {
     static int userScore = 0;
@@ -13,26 +13,26 @@ public class UserStep {
 
     public static void userStep(String input, String lastComputerWord) throws InterruptedException {
 
-        //Чи ввів юзер "здаюсь"?
+        // Has the user entered "здаюсь"?
         if (isEndFromUser(input)) return;
 
-        //Перевіряємо, чи місто, що ввів користувач, є в списку міст.
+        // We check if the city entered by the user is in the list of cities
         if (!isCityInList(input, cities, lastComputerWordChar)) return;
 
-        //Перевіряємо, чи з потрібної букви ми вводимо слово.
+        // Check if we are entering the word from the required letter
         if (lastComputerWord != null) {
             if (!isCorrectFirstChar(input, lastComputerWordChar)) return;
         }
 
-        //Перевірка на повтор від юзера.
+        // Checking for repetition from the user
         if (isRepeatedByUser(input, usedCities, lastComputerWordChar)) return;
 
         usedCities.add(input);
 
-        //Ведемо рахунок балів юзера.
+        //We keep track of the user's points
         userScore += input.length() * 5;
 
-        //Перевірка, якщо місто, яке ввів гравець, закінчується на неіснуючу літеру.
+        //Checking if the city entered by the player ends with a non-existent letter
         lastUserWordChar = isUsersInvalidLastChar(input);
 
         Thread.sleep(500);
