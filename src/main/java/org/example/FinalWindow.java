@@ -53,7 +53,7 @@ public class FinalWindow {
 
     FinalWindow() {
 
-        //Створюємо компоненти.
+        //Create components.
         whoLoseLabel = new JLabel();
         thanksLabel = new JLabel("Дякую за гру! Тепер ви краще знаєте міста України.");
         winnerLabel = new JLabel();
@@ -62,7 +62,7 @@ public class FinalWindow {
         computerScoreLabel = new JLabel();
         endButton = new JButton("Завершити");
 
-        //Створюємо фрейм и задаємо розміри і положенння компонентів.
+        //We create a frame and set the dimensions and positions of the components.
         finalFrame = new JFrame("Вітаємо!");
         finalFrame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         whoLoseLabel.setBounds(WHO_LOSE_LABEL_X, WHO_LOSE_LABEL_Y, WHO_LOSE_LABEL_WIDTH, WHO_LOSE_LABEL_HEIGHT);
@@ -96,7 +96,7 @@ public class FinalWindow {
         endButton.setBackground(Color.BLUE);
         endButton.setForeground(Color.YELLOW);
 
-        // Зміна розміру шрифта для Label-ів.
+        // Changing font size for Label-ів.
         Font font = new Font("Arial", Font.BOLD, 17);
         whoLoseLabel.setFont(font);
         thanksLabel.setFont(font);
@@ -105,22 +105,22 @@ public class FinalWindow {
         userScoreLabel.setFont(font);
         computerScoreLabel.setFont(font);
 
-        // Зміна розміру шрифта для startButton.
+        // Changing the font size for startButton.
         Font buttonFont = new Font("Arial", Font.BOLD, 18);
         endButton.setFont(buttonFont);
 
-        // Отримання розмірів екрану
+        // Obtaining screen dimensions
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenWidth = screenSize.width;
         int screenHeight = screenSize.height;
 
-        // Розрахунок координат для вікна, щоб відкрити його посередині екрану
+        // Calculating coordinates to open the window in the middle of the screen.
         int x = (screenWidth - WINDOW_WIDTH) / 2;
         int y = (screenHeight - WINDOW_HEIGHT) / 2;
         finalFrame.setLocation(x, y);
 
         endButton.addActionListener(e -> {
-            finalFrame.dispose(); // Закриття фінального вікна.
+            finalFrame.dispose(); // Closing the final window.
             System.exit(0);
         });
     }
