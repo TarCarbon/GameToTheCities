@@ -35,13 +35,13 @@ public class GreatingWindow {
 
     GreatingWindow() {
 
-        //Створюємо компоненти.
+        //Create components
         JLabel greatingLabel1 = new JLabel("Вітаємо вас у грі дитинства");
         JLabel greatingLabel2 = new JLabel("і всіх розумників!");
         JButton studyButton = new JButton("Навчатися");
         JButton playButton = new JButton("Грати");
 
-        //Створюємо фрейм і задаємо розміри і положення компонентів.
+        //Create frame and set size
         greatingFrame = new JFrame("Вітаємо!");
         greatingFrame.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         greatingLabel1.setBounds(LABEL1_X, LABEL1_Y, LABEL_WIDTH, LABEL_HEIGHT);
@@ -67,22 +67,22 @@ public class GreatingWindow {
         greatingLabel1.setForeground(Color.BLUE);
         greatingLabel2.setForeground(Color.BLUE);
 
-        // Зміна розміру шрифта для greatingLabel.
+        // Change size of font for greatingLabel.
         Font labelFont = new Font("Arial", Font.BOLD, 18);
         greatingLabel1.setFont(labelFont);
         greatingLabel2.setFont(labelFont);
 
-        // Зміна розміру шрифта для startButton.
+        // Change size of font for startButton.
         Font buttonFont = new Font("Arial", Font.BOLD, 20);
         studyButton.setFont(buttonFont);
         playButton.setFont(buttonFont);
 
-        // Отримання розмірів екрану
+        // Get screen size
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenWidth = screenSize.width;
         int screenHeight = screenSize.height;
 
-        // Розрахунок координат для вікна, щоб відкрити його посередині екрану
+        // open window in the center of screen
         int x = (screenWidth - WINDOW_WIDTH) / 2;
         int y = (screenHeight - WINDOW_HEIGHT) / 2;
         greatingFrame.setLocation(x, y);
@@ -93,8 +93,8 @@ public class GreatingWindow {
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
             }
-            greatingFrame.dispose(); // Закриття вітального вікна
-            new StudyWindow(); // Відкриття ігрового вікна
+            greatingFrame.dispose(); // Close start window
+            new StudyWindow(); // Open play window
         });
 
         playButton.addActionListener(e -> {
@@ -103,8 +103,8 @@ public class GreatingWindow {
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
             }
-            greatingFrame.dispose(); // Закриття вітального вікна
-            new GameWindow(); // Відкриття ігрового вікна
+            greatingFrame.dispose(); // Close start window
+            new GameWindow(); // Open play window
         });
     }
 
